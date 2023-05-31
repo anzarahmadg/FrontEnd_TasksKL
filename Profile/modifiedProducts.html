@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Product List</title>
+    <link rel="stylesheet" type="text/css" href="modifiedProducts.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="row">
+        <div id="divProducts" class="col-md-9">
+
+            <h1>Product List</h1>
+            <div class="row">
+                <div class="product-card" onclick="showModal(1)">
+                    <img src="product1.jpg" alt="Product 1">
+                    <h3>Basket</h3>
+                    <p class="product-price">₹100</p>
+                    <button class="buy-button" onclick="addToCart('Basket', 100)">Buy</button>
+                </div>
+                <div class="product-card" onclick="showModal(2)">
+                    <img src="product2.jpg" alt="Product 2">
+                    <h3>Utensils</h3>
+                    <p class="product-price">₹15</p>
+                    <button class="buy-button" onclick="addToCart('Utensils', 105)">Buy</button>
+                </div>
+                <div class="product-card" onclick="showModal(3)">
+                    <img src="product4.jpg" alt="Product 2">
+                    <h3>Vasnil</h3>
+                    <p class="product-price">₹115</p>
+                    <button class="buy-button" onclick="addToCart('Vasnil', 115)">Buy</button>
+                </div>
+                <div class="product-card" onclick="showModal(2)">
+                    <img src="product5.jpg" alt="Product 2">
+                    <h3>Syrup</h3>
+                    <p class="product-price">₹215</p>
+                    <button class="buy-button" onclick="addToCart('Syrup', 215)">Buy</button>
+                </div>
+                <div class="product-card" onclick="showModal(2)">
+                    <img src="product6.jpg" alt="Product 2">
+                    <h3>Syrup</h3>
+                    <p class="product-price">₹105</p>
+                    <button class="buy-button" onclick="addToCart('Syrup', 105)">Buy</button>
+                </div>
+                <div class="product-card" onclick="showModal(2)">
+                    <img src="product7.png" alt="Product 2">
+                    <h3>I phone 12</h3>
+                    <p class="product-price">₹40,000</p>
+                    <button class="buy-button" onclick="addToCart('I phone 12', 11000)">Buy</button>
+                </div>
+                <div class="product-card" onclick="showModal(2)">
+                    <img src="product8.jpg" alt="Product 2">
+                    <h3>Shampoo</h3>
+                    <p class="product-price">₹515</p>
+                    <button class="buy-button" onclick="addToCart('Shampoo', 515)">Buy</button>
+                </div>
+                <div class="product-card" onclick="showModal(2)">
+                    <img src="product2.jpg" alt="Product 2">
+                    <h3>Kitchen Pack</h3>
+                    <p class="product-price">$15</p>
+                    <button class="buy-button" onclick="addToCart('Kitchen Pack', 15)">Buy</button>
+                </div>
+                <div class="product-card" onclick="showModal(2)">
+                    <img src="product10.jpg" alt="Product 2">
+                    <h3>Box</h3>
+                    <p class="product-price">₹213</p>
+                    <button class="buy-button" onclick="addToCart('Box', 213)">Buy</button>
+                </div>
+                <div class="product-card" onclick="showModal(2)">
+                    <img src="product9.jpeg" alt="Product 2">
+                    <p class="product-price">₹55</p>
+                    <button class="buy-button" onclick="addToCart('Product 2', 55)">Buy</button>
+                </div>
+
+
+
+                <!-- Add more product cards here -->
+            </div>
+
+
+        </div>
+
+        <div class="col-md-3">
+            <div class="cart">
+                <h2>Cart</h2>
+                <hr />
+                <ul id="cart-items"></ul>
+                <p id="total-price">Total Price: ₹0</p>
+                <button class="buy-button" onclick="showPaymentOptions()">Buy All</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-content">
+                        <span class="close" onclick="hideModal()">&times;</span>
+                        <h2>Product Details</h2>
+                        <p id="product-info"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="payment" id="payment">
+        <h2>Select Payment Option</h2>
+        <label>
+            <input type="radio" name="payment-option" value="credit-card"> Credit Card
+        </label>
+        <label>
+            <input type="radio" name="payment-option" value="paypal"> PayPal
+        </label>
+        <button class="buy-button" onclick="completePayment()">Pay Now</button>
+    </div>
+
+    <script src="modified products.js"></script>
+</body>
+
+</html>

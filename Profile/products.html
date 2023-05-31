@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product List</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    .product-card {
+      width: 300px;
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-weight: bold;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 70%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .cart {
+      width: 300px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      position: fixed;
+      right: 20px;
+      top: 20px;
+    }
+
+    .cart-item {
+      margin-bottom: 5px;
+    }
+
+    .buy-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .buy-button:hover {
+      opacity: 0.8;
+    }
+
+    #divCart {
+      margin-top: 60px;
+    }
+
+    #cart-items {
+      list-style-type: none;
+      padding: 0;
+    }
+  </style>
+</head>
+<body style="overflow-x: hidden;">
+  <div class="row">
+    <div class="col-md-10">
+      <h1>Product List</h1>
+
+      <div class="product-card">
+        <img class="product-image" src="product1.jpg" alt="Product 1">
+        <h3>Trolly</h3>
+        <p class="product-price">10</p>
+        <button class="buy-button" onclick="addToCart('Trolly', 10)">Buy</button>
+      </div>
+
+      <div class="product-card">
+        <img class="product-image" src="product2.jpg" alt="Product 2">
+        <h3>Bottel Pack</h3>
+        <p class="product-price">15</p>
+        <button class="buy-button" onclick="addToCart('Bottel Pack', 15)">Buy</button>
+      </div>
+
+      <div class="product-card">
+        <img class="product-image" src="product3.jpg" alt="Product 3">
+        <h3>Camera</h3>
+        <p class="product-price">120</p>
+        <button class="buy-button" onclick="addToCart('Camera')">Buy</button>
+      </div>
+    
+      <div class="product-card">
+        <img class="product-image" src="product4.jpg" alt="Product 4">
+        <h3>Cream</h3>
+        <p class="product-price">110</p>
+        <button class="buy-button" onclick="addToCart('Cream')">Buy</button>
+      </div>
+    
+      <div class="product-card">
+        <img class="product-image" src="product5.jpg" alt="Product 5">
+        <h3>Vasnil</h3>
+        <p class="product-price">210</p>
+        <button class="buy-button" onclick="addToCart('Vasnil')">Buy</button>
+      </div>
+    
+      <div class="product-card">
+        <img class="product-image" src="product6.jpg" alt="Product 6">
+        <h3>Syrup</h3>
+        <p class="product-price">90</p>
+        <button class="buy-button" onclick="addToCart('Syrup')">Buy</button>
+      </div>
+    
+      <div class="product-card">
+        <img class="product-image" src="product7.png" alt="Product 7">
+        <h3>I phone 12</h3>
+        <p class="product-price">50000</p>
+        <button class="buy-button" onclick="addToCart(' I phone 12')">Buy</button>
+      </div>
+    
+      <div class="product-card">
+        <img class="product-image" src="product8.jpg" alt="Product 8">
+        <h3>Soap</h3>
+        <p class="product-price">60</p>
+        <button class="buy-button" onclick="showModal('Soap')">Buy</button>
+      </div>
+    
+      <div class="product-card">
+        <img class="product-image" src="product9.jpeg" alt="Product 9">
+        <h3>Odonil</h3>
+        <p class="product-price">110</p>
+        <button class="buy-button" onclick="addToCart('Odonil')">Buy</button>
+      </div>
+
+      <!-- Rest of the product cards -->
+
+      <div class="modal" id="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2 id="modal-product-name"></h2>
+          <p>Product details here</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <div id="divCart" class="cart">
+        <h2>Cart</h2>
+        <hr/>
+        <ul id="cart-items"></ul>
+        <hr/>
+        <h3>Total: <span id="cart-total">$0</span></h3>
+        <h3>Payment Methods:</h3>
+        <select id="payment-methods" class="payment-method">
+          <option value="credit-card">Credit Card</option>
+          <option value="paypal">PayPal</option>
+          <option value="bitcoin">Bitcoin</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showModal(productName) {
+      document.getElementById('modal-product-name').textContent = productName;
+      document.getElementById('modal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    function addToCart(productName, price) {
+      showModal(productName);
+      var cartItems = document.getElementById('cart-items');
+      var li = document.createElement('li');
+      li.textContent = productName;
+      cartItems.appendChild(li);
+
+      var cartTotal = document.getElementById('cart-total');
+      var currentTotal = parseFloat(cartTotal.textContent.slice(1));
+      var newTotal = currentTotal + price;
+      cartTotal.textContent = '$' + newTotal.toFixed(2);
+    }
+  </script>
+</body>
+</html>
